@@ -1,0 +1,128 @@
+.hourly-wave {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 2rem;
+  margin: 2rem 0;
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.section-title {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.wave-container {
+  position: relative;
+}
+
+.wave-svg {
+  width: 100%;
+  height: clamp(80px, 15vw, 120px);
+  margin-bottom: 1rem;
+}
+
+.wave-path {
+  filter: drop-shadow(0 0 10px rgba(64, 196, 255, 0.6));
+  animation: dash 3s ease-in-out infinite;
+}
+
+@keyframes dash {
+  0%, 100% { stroke-dasharray: 0, 1000; }
+  50% { stroke-dasharray: 1000, 0; }
+}
+
+.hourly-items {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--aurora-purple) transparent;
+}
+
+.hourly-items::-webkit-scrollbar {
+  height: 4px;
+}
+
+.hourly-items::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.hourly-items::-webkit-scrollbar-thumb {
+  background: var(--aurora-purple);
+  border-radius: 10px;
+}
+
+.hour-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 60px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.hour-item:hover {
+  transform: translateY(-5px);
+}
+
+.hour-temp {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.hour-bar {
+  width: 4px;
+  height: clamp(40px, 8vw, 60px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hour-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(180deg, var(--aurora-purple), var(--aurora-blue));
+  border-radius: 10px;
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hour-icon {
+  width: clamp(32px, 6vw, 40px);
+  height: clamp(32px, 6vw, 40px);
+}
+
+.hour-time {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+.hourly-wave {
+    padding: 1.5rem 1rem;
+    border-radius: 20px;
+  }
+.hour-item {
+    min-width: 55px;
+  }
+}
+
+@media (max-width: 480px) {
+.hourly-wave {
+    padding: 1.25rem 0.75rem;
+  }
+.hour-item {
+    min-width: 50px;
+    gap: 0.4rem;
+  }
+}

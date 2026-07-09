@@ -1,0 +1,31 @@
+.simple-footer {
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  position: relative;
+  z-index: 10;
+}
+
+.simple-footer p {
+  margin: 0;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  opacity: 0.6;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+.simple-footer {
+    padding: 1.5rem 1rem;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+.simple-footer {
+    padding: 1.25rem 0.75rem;
+    margin-top: 2rem;
+  }
+}

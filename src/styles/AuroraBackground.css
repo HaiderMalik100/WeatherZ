@@ -1,0 +1,105 @@
+.aurora-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  transition: background 3s ease;
+}
+
+.aurora-bg.Clear {
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+}
+
+.aurora-bg.Clouds {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.aurora-bg.Rain {
+  background: linear-gradient(135deg, #0f1c2e 0%, #1e3a5f 100%);
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: float 20s infinite ease-in-out;
+}
+
+.blob-1 {
+  width: 600px;
+  height: 600px;
+  background: var(--aurora-green);
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--aurora-purple);
+  bottom: -150px;
+  right: -150px;
+  animation-delay: -7s;
+}
+
+.blob-3 {
+  width: 400px;
+  height: 400px;
+  background: var(--aurora-blue);
+  top: 50%;
+  left: 50%;
+  animation-delay: -14s;
+}
+
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: drift 15s infinite linear;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(100px, -100px) scale(1.1); }
+  66% { transform: translate(-50px, 50px) scale(0.9); }
+}
+
+@keyframes drift {
+  from { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  to { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+}
+
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .particle,
+  .wave-path {
+    animation: none;
+  }
+}
+
+/* Mobile performance */
+@media (max-width: 768px) {
+  .aurora-blob {
+    filter: blur(60px);
+  }
+  .blob-1 { width: 400px; height: 400px; }
+  .blob-2 { width: 350px; height: 350px; }
+  .blob-3 { width: 300px; height: 300px; }
+}
